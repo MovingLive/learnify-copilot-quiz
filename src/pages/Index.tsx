@@ -1,12 +1,45 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useState } from 'react';
+import ThemeSelector from '@/components/ThemeSelector';
+import QuizView from '@/components/QuizView';
+import quizData from '@/data/quizData';
 
 const Index = () => {
+  const [selectedThemeId, setSelectedThemeId] = useState<string | null>(null);
+  const [progress, setProgress] = useState<Record<string, boolean>>({});
+
+  const handleSelectTheme = (themeId: string) => {
+    setSelectedThemeId(themeId);
+  };
+
+  const handleBack = () => {
+    setSelectedThemeId(null);
+  };
+
+  const handleComplete = (themeId: string) => {
+    setProgress(prev => ({
+      ...prev,
+      [themeId]: true
+    }));
+  };
+
+  const selectedTheme = quizData.themes.find(theme => theme.id === selectedThemeId);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-8">
+      {selectedTheme ? (
+        <QuizView 
+          theme={selectedTheme} 
+          onBack={handleBack} 
+          onComplete={handleComplete}
+        />
+      ) : (
+        <ThemeSelector 
+          themes={quizData.themes} 
+          onSelectTheme={handleSelectTheme} 
+          progress={progress}
+        />
+      )}
     </div>
   );
 };
