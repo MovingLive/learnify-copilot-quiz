@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card } from '@/data/quizData';
 import { Card as CardUI } from "@/components/ui/card";
-import { Battery, ArrowDown, ArrowRight, ArrowUp, ArrowUpRight } from 'lucide-react';
+import { Battery } from 'lucide-react';
 
 interface QuizCardProps {
   card: Card;
@@ -25,16 +25,6 @@ const QuizCard: React.FC<QuizCardProps> = ({
     }
   };
 
-  const getPowerIcon = (power: number) => {
-    switch (power) {
-      case 1: return <ArrowDown className="w-5 h-5 text-gray-700" />;
-      case 2: return <ArrowRight className="w-5 h-5 text-blue-600" />;
-      case 3: return <ArrowUp className="w-5 h-5 text-purple-600" />;
-      case 4: return <ArrowUpRight className="w-5 h-5 text-green-600" />;
-      default: return <ArrowDown className="w-5 h-5" />;
-    }
-  };
-
   const powerClass = getPowerLevelClass(card.power);
   
   return (
@@ -47,8 +37,8 @@ const QuizCard: React.FC<QuizCardProps> = ({
         <div className="text-lg font-medium">{card.text}</div>
         {showPower && (
           <div className={`flex items-center ml-2 p-1 rounded-md`}>
-            {getPowerIcon(card.power)}
-            <span className="font-semibold ml-1">{card.power}</span>
+            <Battery className="w-5 h-5 mr-1" />
+            <span className="font-semibold">{card.power}</span>
           </div>
         )}
       </div>

@@ -4,7 +4,7 @@ import { Card, Theme } from '@/data/quizData';
 import DraggableCardList from './DraggableCardList';
 import QuizCard from './QuizCard';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Shuffle, CheckCircle, XCircle, HelpCircle, Battery, ArrowDown, ArrowRight, ArrowUp, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, Shuffle, CheckCircle, XCircle, HelpCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { useToast } from '@/hooks/use-toast';
 
@@ -68,29 +68,6 @@ const QuizView: React.FC<QuizViewProps> = ({ theme, onBack, onComplete }) => {
     setSubmitted(false);
   };
 
-  // Power level legend indicators
-  const PowerLevelLegend = () => (
-    <div className="bg-white p-4 mb-6 rounded-lg shadow-sm">
-      <h3 className="text-sm font-medium mb-2">Effectiveness Scale:</h3>
-      <div className="grid grid-cols-4 gap-2">
-        {[
-          { level: 1, icon: <ArrowDown className="h-4 w-4" />, label: "Least Effective", color: "bg-gray-100" },
-          { level: 2, icon: <ArrowRight className="h-4 w-4" />, label: "Somewhat Effective", color: "bg-copilot-light-blue" },
-          { level: 3, icon: <ArrowUp className="h-4 w-4" />, label: "Very Effective", color: "bg-copilot-light-purple" },
-          { level: 4, icon: <ArrowUpRight className="h-4 w-4" />, label: "Most Effective", color: "bg-copilot-light-green" }
-        ].map((item) => (
-          <div key={item.level} className={`flex items-center p-2 rounded-md ${item.color} border`}>
-            <div className="flex items-center">
-              {item.icon}
-              <span className="ml-1 font-semibold">{item.level}</span>
-            </div>
-            <span className="ml-2 text-xs hidden md:inline">{item.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
   return (
     <div className="container px-4 py-8 mx-auto max-w-2xl">
       <div className="mb-6 flex items-center justify-between">
@@ -121,9 +98,6 @@ const QuizView: React.FC<QuizViewProps> = ({ theme, onBack, onComplete }) => {
           </p>
         </div>
       </div>
-
-      {/* Add the power level legend */}
-      <PowerLevelLegend />
 
       {submitted && (
         <div className={`p-4 mb-6 rounded-md flex items-start ${isCorrect ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
