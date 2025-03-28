@@ -6,7 +6,10 @@ import {
   CheckCircle,
   HelpCircle,
   Shuffle,
+  TrendingDown,
+  TrendingUp,
   XCircle,
+  Zap,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import DraggableCardList from "./DraggableCardList";
@@ -99,9 +102,8 @@ const QuizView: React.FC<QuizViewProps> = ({ theme, onBack, onComplete }) => {
         <div className="p-4 bg-blue-50 border border-blue-200 rounded-md flex items-start">
           <HelpCircle className="text-blue-500 h-5 w-5 mt-0.5 flex-shrink-0" />
           <p className="ml-2 text-blue-700 text-sm">
-            Classe les cartes de <strong>la moins efficace (1)</strong> à la {" "}
-            <strong>plus efficace (4)</strong>. Drag and drop pour
-            réorganiser.
+            Classe les cartes de <strong>la moins efficace (1)</strong> à la{" "}
+            <strong>plus efficace (4)</strong>. Drag and drop pour réorganiser.
           </p>
         </div>
       </div>
@@ -141,7 +143,26 @@ const QuizView: React.FC<QuizViewProps> = ({ theme, onBack, onComplete }) => {
       )}
 
       {!submitted ? (
-        <DraggableCardList cards={cards} onSort={handleSort} />
+        <>
+          <div className="mb-2 rounded-md py-2 px-3 bg-gray-50 text-gray-500 text-sm font-medium text-center border border-dashed border-gray-300">
+            <TrendingDown className="inline-block h-4 w-4 mr-1" />
+            Moins efficace{" "}
+            <span className="ml-1 text-yellow-500">
+              <Zap className="inline-block h-4 w-4" />
+            </span>
+          </div>
+          <DraggableCardList cards={cards} onSort={handleSort} />
+          <div className="mt-2 rounded-md py-2 px-3 bg-gray-50 text-gray-500 text-sm font-medium text-center border border-dashed border-gray-300">
+            <TrendingUp className="inline-block h-4 w-4 mr-1" />
+            Plus efficace{" "}
+            <span className="ml-1 text-yellow-500">
+              <Zap className="inline-block h-4 w-4" />
+              <Zap className="inline-block h-4 w-4" />
+              <Zap className="inline-block h-4 w-4" />
+              <Zap className="inline-block h-4 w-4" />
+            </span>
+          </div>
+        </>
       ) : (
         <div className="space-y-4">
           {[...cards]
@@ -165,7 +186,7 @@ const QuizView: React.FC<QuizViewProps> = ({ theme, onBack, onComplete }) => {
             onClick={onBack}
             className="bg-copilot-blue hover:bg-blue-600"
           >
-            Essayer un autre thème
+            Thème suivant
           </Button>
         ) : (
           <Button
