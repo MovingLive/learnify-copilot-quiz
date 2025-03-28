@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from '@/data/quizData';
 import QuizCard from './QuizCard';
 import { DndContext, DragEndEvent, DragStartEvent, DragOverlay, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
@@ -47,6 +47,11 @@ const DraggableCardList: React.FC<DraggableCardListProps> = ({ cards, onSort }) 
   const [activeId, setActiveId] = useState<string | null>(null);
   const [items, setItems] = useState<Card[]>(cards);
   
+  // Add useEffect to update items when cards prop changes
+  useEffect(() => {
+    setItems(cards);
+  }, [cards]);
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
