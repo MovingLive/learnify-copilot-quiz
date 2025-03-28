@@ -82,20 +82,23 @@
   .card-shadow {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
-  
+  .power-level-success {
+    @apply bg-green-50 border-copilot-green text-green-700;
+  }
+
   .power-level-1 {
     @apply bg-gray-100 border-gray-300 text-gray-700;
   }
-  
+
   .power-level-2 {
-    @apply bg-copilot-light-blue border-copilot-blue text-blue-700;
+    @apply bg-green-50 border-copilot-green text-green-700;
   }
-  
+
   .power-level-3 {
-    @apply bg-copilot-light-purple border-copilot-purple text-purple-700;
+    @apply bg-green-100 border-copilot-green text-green-700;
   }
-  
+
   .power-level-4 {
-    @apply bg-copilot-light-green border-copilot-green text-green-700;
+    @apply bg-green-200 border-copilot-green text-green-700;
   }
 }
