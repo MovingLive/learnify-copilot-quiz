@@ -23,32 +23,32 @@ const quizData: QuizData = {
     {
       id: "auto-completion",
       title: "Auto-completion",
-      description: "Learn how to get the most out of GitHub Copilot's auto-completion features",
+      description: "Apprend à tirer le meilleur parti des fonctions d'autocomplétion de GitHub Copilot.",
       icon: "Code",
       cards: [
         {
           id: "auto-1",
-          text: "Wait for Copilot's suggestions",
+          text: "Attendre les suggestions de copilot",
           power: 1,
-          explanation: "Passive approach limits effectiveness. Being more proactive with your prompts can lead to better suggestions."
+          explanation: "Une approche passive limite l'efficacité. En étant plus proactif dans tes prompts, tu obtiendras de meilleures suggestions."
         },
         {
           id: "auto-2",
-          text: "Use descriptive function names and parameters",
+          text: "Utiliser des noms de fonctions et des paramètres descriptifs",
           power: 2,
-          explanation: "Clear naming improves suggestions by giving Copilot more context about your intent."
+          explanation: "La clarté des noms améliore les suggestions en donnant à Copilot plus de contexte sur ton intention."
         },
         {
           id: "auto-3",
-          text: "Add descriptive comments",
+          text: "Ajouter des commentaires descriptifs avant la fonction",
           power: 3,
-          explanation: "Comments provide context that helps Copilot understand the purpose of your code and generate more relevant suggestions."
+          explanation: "Les commentaires fournissent un contexte qui aide Copilot à comprendre l'objectif de votre code et à générer des suggestions plus pertinentes."
         },
         {
           id: "auto-4",
-          text: "Include input/output examples in comments",
+          text: "Inclure des exemples d'entrée/sortie dans les commentaires",
           power: 4,
-          explanation: "Examples help generate precise code by giving Copilot concrete cases to work with."
+          explanation: "Les exemples aident à générer un code précis en fournissant à Copilot des cas concrets sur lesquels travailler."
         }
       ]
     },

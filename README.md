@@ -1,69 +1,74 @@
-# Welcome to your Lovable project
+# GitHub Copilot Quiz
 
-## Project info
+Bienvenue dans **GitHub Copilot Quiz** ! Ce projet interactif vous permet de maîtriser les meilleures pratiques d'utilisation de GitHub Copilot à travers un quiz ludique.
 
-**URL**: https://lovable.dev/projects/1ec247b5-265e-4502-ab2e-1df56c95b5a0
+## Aperçu
 
-## How can I edit this code?
+- **Quiz interactif** : Classez des techniques d'autocomplétion par ordre d'efficacité.
+- **Explications détaillées** : Chaque technique est accompagnée d'une description pour expliquer son intérêt.
+- **Interface moderne** : Construite avec React et Tailwind CSS pour une expérience utilisateur fluide.
 
-There are several ways of editing your application.
+## Structure du projet
 
-**Use Lovable**
+- **src/** : Contient l'ensemble du code source de l'application.
+  - **components/** : Composants UI réutilisables, comme [`QuizCard`](src/components/QuizCard.tsx) et [`ThemeSelector`](src/components/ThemeSelector.tsx).
+  - **data/** : Données du quiz telles que définies dans [`quizData`](src/data/quizData.ts).
+  - **pages/** : Page d'accueil et autres vues de l'application.
+  - **hooks/** et **lib/** : Fonctions utilitaires et hooks personnalisés.
+- **public/** : Fichiers statiques (images, icônes, etc.).
+- **Configurations** :
+  - [postcss.config.js](postcss.config.js)
+  - [tailwind.config.ts](tailwind.config.ts)
+  - [tsconfig.json](tsconfig.json)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1ec247b5-265e-4502-ab2e-1df56c95b5a0) and start prompting.
+## Installation
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Installez les dépendances :
 
-**Use your preferred IDE**
+    ```sh
+    npm install
+    ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+2. Démarrez le serveur de développement :
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+    ```sh
+    npm run dev
+    ```
 
-Follow these steps:
+Accédez à l'application en ouvrant [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Utilisation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **Choisissez un thème** sur la page de démarrage.
+2. **Réorganisez** les cartes en utilisant la fonctionnalité drag and drop pour classer les techniques de la moins efficace à la plus efficace.
+3. **Validez vos réponses** pour obtenir un retour immédiat sur la justesse de votre classement.
+4. **Recommencez** pour améliorer vos résultats et approfondir vos connaissances.
 
-# Step 3: Install the necessary dependencies.
-npm i
+## Contribuer
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Les contributions sont les bienvenues !
 
-**Edit a file directly in GitHub**
+1. Forkez le dépôt.
+2. Créez une branche pour votre fonctionnalité :
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+    ```sh
+    git checkout -b feature/amélioration
+    ```
 
-**Use GitHub Codespaces**
+3. Commitez vos modifications :
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+    ```sh
+    git commit -am "Ajout d'une nouvelle fonctionnalité"
+    ```
 
-## What technologies are used for this project?
+4. Poussez votre branche :
 
-This project is built with .
+    ```sh
+    git push origin feature/amélioration
+    ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+5. Ouvrez une Pull Request.
 
-## How can I deploy this project?
+## Remerciements
 
-Simply open [Lovable](https://lovable.dev/projects/1ec247b5-265e-4502-ab2e-1df56c95b5a0) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+Merci d'utiliser **GitHub Copilot Quiz** ! Profitez de ce projet pour améliorer vos compétences et optimiser votre utilisation de GitHub Copilot.

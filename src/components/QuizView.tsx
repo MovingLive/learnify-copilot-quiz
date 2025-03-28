@@ -1,12 +1,16 @@
-
-import React, { useEffect, useState } from 'react';
-import { Card, Theme } from '@/data/quizData';
-import DraggableCardList from './DraggableCardList';
-import QuizCard from './QuizCard';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft, Shuffle, CheckCircle, XCircle, HelpCircle } from 'lucide-react';
-import { toast } from 'sonner';
-import { useToast } from '@/hooks/use-toast';
+import { Button } from "@/components/ui/button";
+import { Card, Theme } from "@/data/quizData";
+import { useToast } from "@/hooks/use-toast";
+import {
+  ArrowLeft,
+  CheckCircle,
+  HelpCircle,
+  Shuffle,
+  XCircle,
+} from "lucide-react";
+import React, { useEffect, useState } from "react";
+import DraggableCardList from "./DraggableCardList";
+import QuizCard from "./QuizCard";
 
 interface QuizViewProps {
   theme: Theme;
@@ -50,14 +54,16 @@ const QuizView: React.FC<QuizViewProps> = ({ theme, onBack, onComplete }) => {
 
     if (isInCorrectOrder) {
       toast({
-        title: "Great job!",
-        description: "You've correctly ordered the techniques from least to most effective!",
+        title: "Bravo!",
+        description:
+          "Tu as correctement classé les techniques de la moins efficace à la plus efficace!",
       });
       onComplete(theme.id);
     } else {
       toast({
-        title: "Not quite right",
-        description: "Try sorting the techniques by their effectiveness (power level).",
+        title: "Pas tout à fait juste",
+        description:
+          "Essaye de classer les techniques de la moins efficace (niveau de puissance 1) à la plus efficace (niveau de puissance 4).",
         variant: "destructive",
       });
     }
@@ -73,17 +79,17 @@ const QuizView: React.FC<QuizViewProps> = ({ theme, onBack, onComplete }) => {
       <div className="mb-6 flex items-center justify-between">
         <Button variant="outline" size="sm" onClick={onBack}>
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Themes
+          Retour aux thèmes
         </Button>
-        
-        <Button 
-          variant="outline" 
-          size="sm" 
+
+        <Button
+          variant="outline"
+          size="sm"
           onClick={handleShuffle}
           disabled={submitted}
         >
           <Shuffle className="h-4 w-4 mr-2" />
-          Shuffle
+          Réorganiser
         </Button>
       </div>
 
@@ -93,27 +99,42 @@ const QuizView: React.FC<QuizViewProps> = ({ theme, onBack, onComplete }) => {
         <div className="p-4 bg-blue-50 border border-blue-200 rounded-md flex items-start">
           <HelpCircle className="text-blue-500 h-5 w-5 mt-0.5 flex-shrink-0" />
           <p className="ml-2 text-blue-700 text-sm">
-            Sort the cards from <strong>least effective (1)</strong> to <strong>most effective (4)</strong> techniques.
-            Drag and drop to reorder.
+            Classe les cartes de <strong>la moins efficace (1)</strong> à la {" "}
+            <strong>plus efficace (4)</strong>. Drag and drop pour
+            réorganiser.
           </p>
         </div>
       </div>
 
       {submitted && (
-        <div className={`p-4 mb-6 rounded-md flex items-start ${isCorrect ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
+        <div
+          className={`p-4 mb-6 rounded-md flex items-start ${
+            isCorrect
+              ? "bg-green-50 border border-green-200"
+              : "bg-red-50 border border-red-200"
+          }`}
+        >
           {isCorrect ? (
             <CheckCircle className="text-green-500 h-5 w-5 mt-0.5 flex-shrink-0" />
           ) : (
             <XCircle className="text-red-500 h-5 w-5 mt-0.5 flex-shrink-0" />
           )}
           <div className="ml-2">
-            <p className={`font-medium ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
-              {isCorrect ? 'Correct!' : 'Not quite right!'}
+            <p
+              className={`font-medium ${
+                isCorrect ? "text-green-700" : "text-red-700"
+              }`}
+            >
+              {isCorrect ? "Correct!" : "Not quite right!"}
             </p>
-            <p className={`text-sm ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
-              {isCorrect 
-                ? "You've ordered the techniques correctly from least to most effective."
-                : "Try to order the techniques from least effective (power level 1) to most effective (power level 4)."}
+            <p
+              className={`text-sm ${
+                isCorrect ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {isCorrect
+                ? "Bravo! Tu as classé correctement les techniques, de la moins efficace à la plus efficace."
+                : "Essaye de classer les techniques de la moins efficace (niveau de puissance 1) à la plus efficace (niveau de puissance 4)."}
             </p>
           </div>
         </div>
@@ -123,20 +144,35 @@ const QuizView: React.FC<QuizViewProps> = ({ theme, onBack, onComplete }) => {
         <DraggableCardList cards={cards} onSort={handleSort} />
       ) : (
         <div className="space-y-4">
-          {[...cards].sort((a, b) => a.power - b.power).map((card) => (
-            <QuizCard key={card.id} card={card} showPower={true} />
-          ))}
+          {[...cards]
+            .sort((a, b) => a.power - b.power)
+            .map((card) => (
+              <QuizCard key={card.id} card={card} showPower={true} />
+            ))}
         </div>
       )}
 
       <div className="mt-6 flex justify-center">
         {!submitted ? (
-          <Button onClick={handleSubmit} className="bg-copilot-purple hover:bg-purple-600">
-            Submit Answer
+          <Button
+            onClick={handleSubmit}
+            className="bg-copilot-purple hover:bg-purple-600"
+          >
+            Valider
+          </Button>
+        ) : isCorrect ? (
+          <Button
+            onClick={onBack}
+            className="bg-copilot-blue hover:bg-blue-600"
+          >
+            Essayer un autre thème
           </Button>
         ) : (
-          <Button onClick={handleReset} className="bg-copilot-blue hover:bg-blue-600">
-            Try Again
+          <Button
+            onClick={handleReset}
+            className="bg-copilot-blue hover:bg-blue-600"
+          >
+            Ré-essayer
           </Button>
         )}
       </div>
